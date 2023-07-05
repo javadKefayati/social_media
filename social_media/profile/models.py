@@ -3,7 +3,6 @@ from social_media.users.models import BaseUser
 
 class Profile(models.Model):
     user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
-    
     posts_count = models.PositiveIntegerField(default=0)
     follower_count = models.PositiveIntegerField(default=0)
     following_count = models.PositiveIntegerField(default=0)
