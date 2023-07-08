@@ -12,7 +12,7 @@ from .selectors import get_post
 from drf_spectacular.utils import extend_schema
 
 
-class PostApi(APIView, ApiAuthMixin):
+class detail_post(ApiAuthMixin,APIView):
     class OutPutSerializer(serializers.ModelSerializer):
         class Meta:
             model = Post 
@@ -20,13 +20,10 @@ class PostApi(APIView, ApiAuthMixin):
 
     
     @extend_schema(responses= OutPutSerializer)
-    def get(request, post_id:int):
+    def get(self, request, post_id:int):
         user = request.user
         post = get_post(user, post_id)
-        Response(OutPutSerializer(post))
+        return Response(self.OutPutSerializer(post).data)
         
         
     
-    def post(request):
-        ...
-
