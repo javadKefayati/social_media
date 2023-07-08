@@ -3,5 +3,5 @@ from .apis import ProfileApi
 
 
 urlpatterns = [
-    path('profile/', ProfileApi.as_view(),name="register"),
+    path('get/', ProfileApi.as_view(),name="get profile "),
 ]
