@@ -12,18 +12,34 @@ from .selectors import get_post
 from drf_spectacular.utils import extend_schema
 
 
-class detail_post(ApiAuthMixin,APIView):
+class detailPost(ApiAuthMixin,APIView):
     class OutPutSerializer(serializers.ModelSerializer):
         class Meta:
             model = Post 
             fields = ("id", "text", "created_at", "updated_at")
+            
 
     
     @extend_schema(responses= OutPutSerializer)
     def get(self, request, post_id:int):
         user = request.user
         post = get_post(user, post_id)
+        if post.id is None:
+            return Response({"msg":"post not found."})
         return Response(self.OutPutSerializer(post).data)
+    
+    
+class AllPost(ApiAuthMixin,APIView):
+    class OutPutSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Post 
+            fields = ("id", "text", "created_at", "updated_at")
+            
+    @extend_schema(responses= OutPutSerializer)
+    def get(self, request, post_id:int):
+        user = request.user
+        
+        return Response(self.OutPutSerializer(post, many=True).data)
         
         
     
