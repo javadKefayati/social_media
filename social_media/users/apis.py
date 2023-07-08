@@ -77,16 +77,18 @@ class RegisterApi(APIView):
             return data
 
 
-    @extend_schema(request=InputRegisterSerializer, responses=OutPutRegisterSerializer)
+    @extend_schema(request=InputRegisterSerializer, responses=OutPutRegisterSerializer, description="create profile")
     def post(self, request):
         serializer = self.InputRegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         try:
+            # create user with default profile 
             user = register(
                     email=serializer.validated_data.get("email"),
                     password=serializer.validated_data.get("password"),
                     bio=serializer.validated_data.get("bio"),
                     )
+            
         except Exception as ex:
             return Response(
                     f"Database Error {ex}",
