@@ -19,7 +19,7 @@ LOCAL_APPS = [
     'social_media.users.apps.UsersConfig',
     'social_media.authentication.apps.AuthenticationConfig',
     'social_media.post.apps.PostConfig',
-    'social_media.post.apps.ProfileConfig',
+    'social_media.profile.apps.ProfileConfig',
 ]
 
 THIRD_PARTY_APPS = [
