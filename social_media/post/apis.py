@@ -3,12 +3,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import serializers
 
-from django.core.validators import MinLengthValidator
-from .validators import number_validator, special_char_validator, letter_validator
-from social_media.users.models import BaseUser , Profile
+from social_media.users.models import BaseUser
+from social_media.post.models import Post
 from social_media.api.mixins import ApiAuthMixin
 
-from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
+from .selectors import get_post
 
 from drf_spectacular.utils import extend_schema
 
@@ -16,13 +15,17 @@ from drf_spectacular.utils import extend_schema
 class PostView(APIView, ApiAuthMixin):
     class OutPutSerializer(serializers.ModelSerializer):
         class Meta:
-            model = Profile 
-            fields = ("id","text","crated_at","updated_at")
+            model = Post 
+            fields = ("id", "text", "crated_at", "updated_at")
 
     
     @extend_schema(Response= OutPutSerializer)
     def get(request, post_id:int):
-        ...
+        user = request.user
+        post = get_post(user, post_id)
+        Response(OutPutSerializer(post))
+        
+        
     
     def post(request):
         ...
