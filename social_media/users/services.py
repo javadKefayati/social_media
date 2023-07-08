@@ -1,5 +1,6 @@
 from django.db import transaction 
-from .models import BaseUser, Profile
+from .models import BaseUser
+from social_media.profile.models import Profile
 
 
 def create_profile(*, user:BaseUser, bio:str | None) -> Profile:

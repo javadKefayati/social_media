@@ -8,7 +8,6 @@ from .validators import number_validator, special_char_validator, letter_validat
 from social_media.users.models import BaseUser 
 from social_media.profile.models import Profile
 from social_media.api.mixins import ApiAuthMixin
-from social_media.users.selectors import get_profile
 from social_media.users.services import register 
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 

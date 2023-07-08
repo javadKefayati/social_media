@@ -7,8 +7,7 @@ from django.core.validators import MinLengthValidator
 from .validators import number_validator, special_char_validator, letter_validator
 from social_media.users.models import BaseUser , Profile
 from social_media.api.mixins import ApiAuthMixin
-from social_media.users.selectors import get_profile
-from social_media.users.services import register 
+from social_media.profile.selectors import get_profile
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
 from drf_spectacular.utils import extend_schema

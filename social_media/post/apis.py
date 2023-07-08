@@ -19,7 +19,7 @@ class PostApi(APIView, ApiAuthMixin):
             fields = ("id", "text", "crated_at", "updated_at")
 
     
-    @extend_schema(Response= OutPutSerializer)
+    @extend_schema(responses= OutPutSerializer)
     def get(request, post_id:int):
         user = request.user
         post = get_post(user, post_id)
