@@ -7,8 +7,7 @@ from django.core.validators import MinLengthValidator
 from .validators import number_validator, special_char_validator, letter_validator
 from social_media.users.models import BaseUser , Profile
 from social_media.api.mixins import ApiAuthMixin
-from social_media.users.selectors import get_profile
-from social_media.users.services import register 
+
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
 from drf_spectacular.utils import extend_schema
@@ -22,7 +21,7 @@ class PostView(APIView, ApiAuthMixin):
 
     
     @extend_schema(Response= OutPutSerializer)
-    def get(request):
+    def get(request, post_id:int):
         ...
     
     def post(request):
