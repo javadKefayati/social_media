@@ -33,6 +33,7 @@ class RegisterApi(APIView):
     class InputRegisterSerializer(serializers.Serializer):
         email = serializers.EmailField(max_length=255)
         bio = serializers.CharField(max_length=1000, required=False)
+        username = serializers.CharField(max_length=1000, required=False)
         password = serializers.CharField(
                 validators=[
                         number_validator,
@@ -84,6 +85,7 @@ class RegisterApi(APIView):
         try:
             # create user with default profile 
             user = register(
+                    username = serializer.validated_data.get("username"),
                     email=serializer.validated_data.get("email"),
                     password=serializer.validated_data.get("password"),
                     bio=serializer.validated_data.get("bio"),

@@ -16,7 +16,7 @@ class PostApi(APIView, ApiAuthMixin):
     class OutPutSerializer(serializers.ModelSerializer):
         class Meta:
             model = Post 
-            fields = ("id", "text", "crated_at", "updated_at")
+            fields = ("id", "text", "created_at", "updated_at")
 
     
     @extend_schema(responses= OutPutSerializer)

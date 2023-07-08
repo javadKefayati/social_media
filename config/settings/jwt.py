@@ -6,7 +6,7 @@ from config.env import env
 # Read everything from here - https://styria-digital.github.io/django-rest-framework-jwt/#additional-settings
 
 # Default to 7 days
-JWT_EXPIRATION_DELTA_SECONDS = env("JWT_EXPIRATION_DELTA_SECONDS", default=60 * 60 * 24 * 7)
+JWT_EXPIRATION_DELTA_SECONDS = env("JWT_EXPIRATION_DELTA_SECONDS", default=300 * 60 * 24 * 7)
 JWT_AUTH_COOKIE = env("JWT_AUTH_COOKIE", default="jwt")
 JWT_AUTH_COOKIE_SAMESITE = env("JWT_AUTH_COOKIE_SAMESITE", default="Lax")
 JWT_AUTH_HEADER_PREFIX = env("JWT_AUTH_HEADER_PREFIX", default="Bearer")
