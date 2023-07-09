@@ -1,7 +1,12 @@
 from django.urls import path
-from .apis import PostApi
-
+# from .apis import PostApi
+from .apis import PostList
+from rest_framework import routers
+router = routers.DefaultRouter()
+router.register(r'cutarea', PostList,    basename='cutareadel')
 
 urlpatterns = [
-    path('get/<int:post_id>', PostApi.as_view(),name="post api"),
+    # url(r'^apidsf/', include(router.urls)),
+    # path('', PostList.as_view({'get': 'list'}),name="post api1"),
 ]
+urlpatterns += router.urls

@@ -8,5 +8,5 @@ class Post(BaseModel):
                 default= ""
                 
             )
-    title = models.CharField(max_length=100 , default="")
+    title = models.CharField(max_length=100 , default=" ")
     
