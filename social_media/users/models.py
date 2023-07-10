@@ -9,11 +9,11 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 
 
 class BaseUserManager(BUM):
-    def create_user(self, username, is_active=True, is_admin=False, password=None):
+    def create_user(self, username, email, is_active=True, is_admin=False, password=None):
         if not username:
             raise ValueError("Users must have an username ")
 
-        user = self.model(username=username, is_active=is_active, is_admin=is_admin)
+        user = self.model(username=username, email= email, is_active=is_active, is_admin=is_admin)
 
         if password is not None:
             user.set_password(password)

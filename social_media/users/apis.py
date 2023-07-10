@@ -5,9 +5,9 @@ from rest_framework import serializers
 
 from django.core.validators import MinLengthValidator
 from .validators import number_validator, special_char_validator, letter_validator
-from social_media.users.models import BaseUser , Profile
+from social_media.users.models import BaseUser 
+from social_media.profile.models import Profile
 from social_media.api.mixins import ApiAuthMixin
-from social_media.users.selectors import get_profile
 from social_media.users.services import register 
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
@@ -33,6 +33,7 @@ class RegisterApi(APIView):
     class InputRegisterSerializer(serializers.Serializer):
         email = serializers.EmailField(max_length=255)
         bio = serializers.CharField(max_length=1000, required=False)
+        username = serializers.CharField(max_length=1000, required=False)
         password = serializers.CharField(
                 validators=[
                         number_validator,
@@ -84,6 +85,7 @@ class RegisterApi(APIView):
         try:
             # create user with default profile 
             user = register(
+                    username = serializer.validated_data.get("username"),
                     email=serializer.validated_data.get("email"),
                     password=serializer.validated_data.get("password"),
                     bio=serializer.validated_data.get("bio"),

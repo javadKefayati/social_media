@@ -19,7 +19,7 @@ LOCAL_APPS = [
     'social_media.users.apps.UsersConfig',
     'social_media.authentication.apps.AuthenticationConfig',
     'social_media.post.apps.PostConfig',
-    'social_media.post.apps.ProfileConfig',
+    'social_media.profile.apps.ProfileConfig',
 ]
 
 THIRD_PARTY_APPS = [
@@ -30,6 +30,7 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'drf_spectacular',
     'django_extensions',
+    'rest_framework.authtoken',
 ]
 
 INSTALLED_APPS = [
@@ -146,7 +147,9 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': []
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 

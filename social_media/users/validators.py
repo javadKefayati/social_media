@@ -23,7 +23,7 @@ def letter_validator(password):
 def special_char_validator(password):
     regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
     if regex.search(password) == None:
-        raise ValidationError(
+        raise ValidationError(  
                 _("password must include special char"),
                 code="password_must_include_special_char"
                 )

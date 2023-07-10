@@ -1,4 +1,8 @@
 from .models import Post
-def get_profile(requst, post_id)-> Post:
-    post = Post.objects.get(user=user, id= Post_id)
-    return post
+from ..profile.models import Profile
+from ..profile.selectors import get_profile
+def get_post(*, user)-> Post:
+    profile = get_profile(user)
+    #if you want all post
+    posts = Post.objects.filter(profile = profile)
+    return posts
