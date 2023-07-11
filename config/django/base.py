@@ -21,7 +21,7 @@ LOCAL_APPS = [
     'social_media.post.apps.PostConfig',
     'social_media.profile.apps.ProfileConfig',
     'social_media.comments.apps.CommentsConfig',
-
+    'social_media.test_code.apps.TestCodeConfig',
 ]
 
 THIRD_PARTY_APPS = [
@@ -33,6 +33,7 @@ THIRD_PARTY_APPS = [
     'drf_spectacular',
     'django_extensions',
     'rest_framework.authtoken',
+    'debug_toolbar',
 ]
 
 INSTALLED_APPS = [
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -134,12 +136,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {

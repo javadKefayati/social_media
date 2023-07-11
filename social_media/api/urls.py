@@ -14,4 +14,5 @@ urlpatterns = [
     path('user/', include(('social_media.users.urls', 'register'))),
     path('profile/', include(('social_media.profile.urls', 'profile'))),
     path('post/', include(('social_media.post.urls', 'post')),name="post apis"),
+    path('test/', include(('social_media.test_code.urls', 'post')),name="test apis"),
 ]
