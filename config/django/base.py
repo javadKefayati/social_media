@@ -20,6 +20,8 @@ LOCAL_APPS = [
     'social_media.authentication.apps.AuthenticationConfig',
     'social_media.post.apps.PostConfig',
     'social_media.profile.apps.ProfileConfig',
+    'social_media.comments.apps.CommentsConfig',
+
 ]
 
 THIRD_PARTY_APPS = [
