@@ -46,6 +46,7 @@ class PostList(
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated:
+            # TODO ordered with created_at list posts
             return Post.objects.filter(profile__user=user)
         return Post.objects.none()
 
