@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_social_media_1691391090103-push-trigger-input-set
+  identifier: Build_social_media_1691391090103pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_social_media_1691391090103
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
