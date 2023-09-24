@@ -1,6 +1,6 @@
 from django.urls import path
 from .apis import ProfileApi
-from social_media.users import RegisterProfileApi
+from social_media.users.apis import RegisterProfileApi
 
 
 urlpatterns = [
