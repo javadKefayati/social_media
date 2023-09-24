@@ -27,7 +27,7 @@ class ProfileApi(ApiAuthMixin, APIView):
         return Response(self.OutPutSerializer(query, context={"request":request}).data)
 
 
-class RegisterApi(APIView):
+class RegisterProfileApi(APIView):
 
 
     class InputRegisterSerializer(serializers.Serializer):
