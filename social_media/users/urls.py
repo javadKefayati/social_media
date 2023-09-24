@@ -1,7 +1,7 @@
 from django.urls import path
-from .apis import RegisterApi
+from .apis import RegisterProfileApi
 
 
 urlpatterns = [
-    path('register/', RegisterApi.as_view(),name="register"),
+    path('register/', RegisterProfileApi.as_view(),name="register"),
 ]

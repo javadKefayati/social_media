@@ -11,7 +11,6 @@ urlpatterns = [
     path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path('auth/', include(('social_media.authentication.urls', 'auth'))),
-    path('user/', include(('social_media.users.urls', 'register'))),
     path('profile/', include(('social_media.profile.urls', 'profile'))),
     path('post/', include(('social_media.post.urls', 'post')),name="post apis"),
     path('test/', include(('social_media.test_code.urls', 'post')),name="test apis"),
