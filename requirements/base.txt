@@ -20,7 +20,7 @@ boto3==1.24.71
 attrs==22.1.0
 
 djangorestframework-simplejwt==5.2.2
-drf-spectacular==0.26.3
+drf-spectacular==0.26.5
 
 django-redis==5.2.0
 Faker==15.1.1
