@@ -17,22 +17,36 @@ from rest_framework import permissions
 
 from rest_framework import viewsets
 
+from social_media.profile.models import  Profile
+
 class PostFilterSet(django_filters.FilterSet):
     class Meta:
         model = Post
         fields = ['id', 'title']
 
 
+
+class ProfileOutputSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("user","posts_count")
+
+
 class PostOutputSerializer(serializers.ModelSerializer):
+    new_key = serializers.SerializerMethodField()
+
+    profile = ProfileOutputSerializer(read_only=True)
     class Meta:
         model = Post
         
-        fields = ("id", "content", "title", "created_at", "updated_at")
+        fields = ("id","new_key" ,"profile", "content", "title", "created_at", "updated_at")
         extra_kwargs = {
             'id': {'read_only': True},
             'created_at': {'read_only': True},
             'updated_at': {'read_only': True},
         }
+    def get_new_key(self, obj):
+        return 'new_value'
 
 
 class PostList(
