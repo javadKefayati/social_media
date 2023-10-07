@@ -24,3 +24,6 @@ class ProfileApi(ApiAuthMixin, APIView):
     def get(self, request):
         query = get_profile(user=request.user)
         return Response(self.OutPutSerializer(query, context={"request":request}).data)
+    
+
+

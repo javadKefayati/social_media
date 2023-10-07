@@ -1,5 +1,4 @@
 from rest_framework import status
-from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import serializers
 
@@ -14,6 +13,8 @@ from rest_framework import generics
 from rest_framework import mixins
 from social_media.profile.selectors import get_profile
 from rest_framework import permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from rest_framework import viewsets
 
@@ -26,27 +27,20 @@ class PostFilterSet(django_filters.FilterSet):
 
 
 
-class ProfileOutputSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = ("user","posts_count")
 
 
 class PostOutputSerializer(serializers.ModelSerializer):
-    new_key = serializers.SerializerMethodField()
 
-    profile = ProfileOutputSerializer(read_only=True)
     class Meta:
         model = Post
         
-        fields = ("id","new_key" ,"profile", "content", "title", "created_at", "updated_at")
+        fields = ("id", "content", "title", "created_at", "updated_at")
         extra_kwargs = {
             'id': {'read_only': True},
             'created_at': {'read_only': True},
             'updated_at': {'read_only': True},
         }
-    def get_new_key(self, obj):
-        return 'new_value'
+
 
 
 class PostList(
@@ -56,7 +50,10 @@ class PostList(
     serializer_class = PostOutputSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = PostFilterSet
-    
+    ordering_fields = '__all__'
+    ordering = ('created_at')
+
+
     def get_queryset(self):
         user = self.request.user
         if user.is_authenticated:
@@ -68,6 +65,8 @@ class PostList(
     def perform_create(self, serializer):
         profile = self.request.user.profile
         serializer.save(profile=profile)
-        
+
+    
+
 
 
