@@ -16,12 +16,11 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 LOCAL_APPS = [
     'social_media.core.apps.CoreConfig',
     'social_media.common.apps.CommonConfig',
-    'social_media.users.apps.UsersConfig',
+    'social_media.user.apps.UserConfig',
     'social_media.authentication.apps.AuthenticationConfig',
     'social_media.post.apps.PostConfig',
     'social_media.profile.apps.ProfileConfig',
-    'social_media.comments.apps.CommentsConfig',
-    'social_media.test_code.apps.TestCodeConfig',
+    'social_media.comment.apps.CommentConfig',
 ]
 
 THIRD_PARTY_APPS = [
@@ -87,7 +86,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='psql://postgres:1234@127.0.0.1:5432/social_media'),
+    'default': env.db('DATABASE_URL', default='psql://postgres:1234@127.0.0.1:5432/postgres'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -121,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTH_USER_MODEL = 'users.BaseUser'
+AUTH_USER_MODEL = 'user.BaseUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
