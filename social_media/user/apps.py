@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TestCodeConfig(AppConfig):
+class UserConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'social_media.test_code'
+    name = 'social_media.user'

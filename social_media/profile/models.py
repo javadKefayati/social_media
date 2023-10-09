@@ -1,5 +1,5 @@
 from django.db import models
-from social_media.users.models import BaseUser
+from social_media.user.models import BaseUser
 
 class Profile(models.Model):
     user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)

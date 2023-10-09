@@ -1,7 +1,4 @@
-from rest_framework import status
-from rest_framework.views import APIView
 from rest_framework import serializers
-
 from social_media.post.models import Post
 from social_media.api.mixins import ApiAuthMixin
 from .selectors import get_post
@@ -9,15 +6,8 @@ import django_filters
 from drf_spectacular.utils import extend_schema, OpenApiParameter,extend_schema_field
 import django_filters.rest_framework
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
-from rest_framework import mixins
 from social_media.profile.selectors import get_profile
-from rest_framework import permissions
-from rest_framework.decorators import action
-from rest_framework.response import Response
-
 from rest_framework import viewsets
-
 from social_media.profile.models import  Profile
 
 class PostFilterSet(django_filters.FilterSet):

@@ -1,10 +1,8 @@
 from django.urls import path
 from .apis import ProfileApi
-from social_media.users.apis import RegisterProfileApi
+from rest_framework import routers
 
-
-urlpatterns = [
-    path('info/', ProfileApi.as_view(),name="get profile "),
-    path('register/', RegisterProfileApi.as_view(),name="register"),
-
-]
+router = routers.DefaultRouter()
+router.register(r'', ProfileApi,    basename='profile route')
+urlpatterns = []
+urlpatterns += router.urls

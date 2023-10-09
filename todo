@@ -1,2 +1,4 @@
 1- create delete account api
-2
+2- perm for model class
+3- is not superuser that user created with api
+4- create .env file settings 
